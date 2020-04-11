@@ -1,4 +1,4 @@
-const InputData = {
+const Inputdata = {
   region: {
     name: 'Africa',
     avgAge: 19.7,
@@ -11,17 +11,26 @@ const InputData = {
   population: 66622705,
   totalHospitalBeds: 1380614
 };
+// eslint-disable-next-line no-unused-vars
 const impact = {
-  currentlyInfected: InputData.reportedCases * 10,
-  infectionsByRequestedTime: this.currentlyInfected * Math.pow(2,9)
-}
+  currentlyInfected: Inputdata.reportedCases * 10,
+  infectionsByRequestedTime: this.currentlyInfected * 2 ** 9
+};
 
-const servereImpact= {
-  currentlyInfected: InputData.reportedCases * 50,
-  infectionsByRequestedTime: this.currentlyInfected * Math.pow(2,9),
-  severeCasesByRequestedTime: this.infectionsByRequestedTime*0.15
+// eslint-disable-next-line no-unused-vars
+const servereImpact = {
+  currentlyInfected: Inputdata.reportedCases * 50,
+  infectionsByRequestedTime: this.currentlyInfected * 2 ** 9,
+  severeCasesByRequestedTime: this.infectionsByRequestedTime * 0.15
 
-}
-const covid19ImpactEstimator = (data) => data;
+};
+const covid19ImpactEstimator = (data) => {
+  const input = data;
+  return {
+    data: input,
+    impact: {},
+    severeImpact: {}
+  };
+};
 
-
+export default covid19ImpactEstimator;
