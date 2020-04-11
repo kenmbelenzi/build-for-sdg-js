@@ -11,21 +11,25 @@ const Inputdata = {
   population: 66622705,
   totalHospitalBeds: 1380614
 };
-// eslint-disable-next-line no-unused-vars
-const impact = {
-  currentlyInfected: Inputdata.reportedCases * 10,
-  infectionsByRequestedTime: this.currentlyInfected * 2 ** 9
-};
 
-// eslint-disable-next-line no-unused-vars
-const servereImpact = {
-  currentlyInfected: Inputdata.reportedCases * 50,
-  infectionsByRequestedTime: this.currentlyInfected * 2 ** 9,
-  severeCasesByRequestedTime: this.infectionsByRequestedTime * 0.15
-
-};
 const covid19ImpactEstimator = (data) => {
+  const impact = {};
+  const severeImpact = {};
   const input = data;
+  // eslint-disable-next-line no-unused-vars
+  let time;
+
+  // challenge one
+  impact.currentlyInfected = Inputdata.reportedCases * 10;
+  severeImpact.currentlyInfected = Inputdata.reportedCases * 50;
+
+  // time estimation
+  if (Inputdata.periodType === 'days') time = 2 ** Math.trunc(Inputdata.timeToElapse / 3);
+  else if (Inputdata.periodType === 'weeks') time = 2 ** Math.trunc((Inputdata.timeToElapse * 7) / 3);
+  else if (Inputdata.periodType === 'months') time = 2 ** Math.trunc((Inputdata.timeToElapse * 30) / 3);
+
+  impact.infectionsByRequestedTime = impact.currentlyInfected * time;
+  severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * time;
   return {
     data: input,
     impact: {},
