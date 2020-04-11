@@ -35,7 +35,7 @@ const covid19ImpactEstimator = (data) => {
   impact.severeCasesByRequestedTime = 0.15 * impact.infectionsByRequestedTime;
   severeImpact.severeCasesByRequestedTime = 0.15 * severeImpact.infectionsByRequestedTime;
 
-  const bedsAvailable = 0.35 * Inputdata.totalHospitalBeds;
+  const bedsAvailable = Math.trunc(0.35 * Inputdata.totalHospitalBeds);
 
   impact.hospitalBedsByRequestedTime = bedsAvailable - impact.severeCasesByRequestedTime;
   // eslint-disable-next-line max-len
@@ -64,6 +64,7 @@ const covid19ImpactEstimator = (data) => {
     impact: {},
     severeImpact: {}
   };
+  // eslint-disable-next-line no-unreachable
 };
 
 export default covid19ImpactEstimator;
