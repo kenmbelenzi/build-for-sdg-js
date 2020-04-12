@@ -12,6 +12,7 @@ const Inputdata = {
   totalHospitalBeds: 1380614
 };
 
+// eslint-disable-next-line no-unused-vars
 const covid19ImpactEstimator = (data) => {
   const impact = {};
   const severeImpact = {};
@@ -61,8 +62,8 @@ const covid19ImpactEstimator = (data) => {
 
   return {
     data: input,
-    impact: {},
-    severeImpact: {}
+    impact,
+    severeImpact
   };
   // eslint-disable-next-line no-unreachable
 };
